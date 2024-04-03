@@ -20,14 +20,12 @@ class Coche {
     }
 }
 
-function calcularMedia(numero1: number, numero2: number, numero3: number) {
-    //let suma = 0;
-    //let numParam = 0;
-    //for (let contador = 0; contador < arguments.length; contador++) {
-    //    suma += arguments[contador];
-    //    numParam++;
-    //}
-    return ((numero1 + numero2 + numero3) / 3).toFixed(2);
+function calcularMedia(...numeros: number[]): number {
+    let suma = 0;
+    for (let contador = 0; contador < numeros.length; contador++) {
+        suma += numeros[contador];
+    }
+    return Number((suma / numeros.length).toFixed(2));
 }
 
 let coche1 = new Coche("7643HT", 60, 105.8, "Seat 600");
