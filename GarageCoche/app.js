@@ -17,9 +17,6 @@ class Coche {
         return Number((this.velocidad / this.potencia).toFixed(2));
     }
 }
-//function calcularMedia(numero1, numero2, numero3) {
-//    return ((numero1 + numero2 + numero3) / 3).toFixed(2);
-//}
 function calcularMedia(...numeros) {
     let suma = 0;
     for (let contador = 0; contador < numeros.length; contador++) {
@@ -28,7 +25,7 @@ function calcularMedia(...numeros) {
     return Number((suma / numeros.length).toFixed(2));
 }
 let coche1 = new Coche("7643HT", 60, 105.8, "Seat 600");
-let coche2 = new Coche("456KLG", 125, 187.9, "Volvo 678");
+let coche2 = new Coche("4856KLG", 125, 187.9, "Volvo 678");
 let coche3 = new Coche("2967FED", 190, 245.7, "Mercedes 500");
 document.write(coche1.imprime());
 document.write(`Velocidad crucero: ${coche1.velocidadCrucero()}<br/><br/>`);
