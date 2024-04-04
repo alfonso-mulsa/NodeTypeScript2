@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "GarageCoche", "GarageCoche\GarageCoche.esproj", "{6ACE4124-01C4-431D-8090-F782D6B54337}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Envios", "Envios\Envios.esproj", "{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,12 @@ Global
 		{6ACE4124-01C4-431D-8090-F782D6B54337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ACE4124-01C4-431D-8090-F782D6B54337}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6ACE4124-01C4-431D-8090-F782D6B54337}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
