@@ -1,19 +1,24 @@
 class Envio {
-    idEnvio: string = "";
+    private _idEnvio: string = "";
     numEnvio: BigInt = BigInt(0);
     precio: number = 0;
     recibido: boolean = false;
 
     constructor(idEnvio: string, numEnvio: BigInt, precio: number, recibido: boolean) {
-        if (!/[A-H]{2}[0-9]{2}[I-Z]{2}/.test(idEnvio)) {
-            alert(`El identificador de envio ${idEnvio} no es valido.`);
-            return;
-        }
-
         this.idEnvio = idEnvio;
         this.numEnvio = numEnvio;
         this.precio = precio;
         this.recibido = recibido;
+    }
+    public set idEnvio(nuevoIdEnvio: string) {
+        if (/[A-H]{2}[0-9]{2}[I-Z]{2}/.test(nuevoIdEnvio)) {
+            this._idEnvio = nuevoIdEnvio;
+        } else {
+            alert(`El identificador de envio ${nuevoIdEnvio} no es valido.`);
+        }
+    }
+    public get idEnvio(): string {
+        return this._idEnvio;
     }
 
     iva(): number {
