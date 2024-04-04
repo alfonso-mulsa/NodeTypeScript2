@@ -46,7 +46,7 @@ document.write(figura1.material + "<br/><br/>");
 let figura2 = new Figura(123, 65, "Hierro");
 document.write(figura2.imprime());
 document.write(figura2.material + "<br/><br/>");
-let figura3 = new Figura(123, 223, "Aluminio");
+let figura3 = new Figura(89, 223, "Aluminio");
 document.write(figura3.imprime());
 document.write(figura3.material + "<br/><br/>");
 //envio1.precio = 100;

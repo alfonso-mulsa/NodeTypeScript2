@@ -1,138 +1,147 @@
+"use strict";
 class Animal {
-    private _yearNacimiento: number = 0;
-    private _mesNacimiento: number = 0;
-    private _diaNacimiento: number = 0;
-    private _nombre: string = "";
-    constructor(yearNacimiento: number, mesNacimiento: number, diaNacimiento: number, nombre: string) {
+    constructor(yearNacimiento, mesNacimiento, diaNacimiento, nombre) {
+        this._yearNacimiento = 0;
+        this._mesNacimiento = 0;
+        this._diaNacimiento = 0;
+        this._nombre = "";
         this.yearNacimiento = yearNacimiento;
         this.mesNacimiento = mesNacimiento;
         this.diaNacimiento = diaNacimiento;
         this.nombre = nombre;
     }
-    public get yearNacimiento(): number {
+    get yearNacimiento() {
         return this._yearNacimiento;
     }
-    public set yearNacimiento(value: number) {
+    set yearNacimiento(value) {
         if (value < 2000) {
             this._yearNacimiento = 2000;
-        } else if (value > 2024) {
+        }
+        else if (value > 2024) {
             this._yearNacimiento = 2024;
-        } else {
+        }
+        else {
             this._yearNacimiento = value;
         }
     }
-    public get mesNacimiento(): number {
+    get mesNacimiento() {
         return this._mesNacimiento;
     }
-    public set mesNacimiento(value: number) {
+    set mesNacimiento(value) {
         if (value < 1) {
             this._mesNacimiento = 1;
-        } else if (value > 12) {
+        }
+        else if (value > 12) {
             this._mesNacimiento = 12;
-        } else {
+        }
+        else {
             this._mesNacimiento = value;
         }
     }
-    public get diaNacimiento(): number {
+    get diaNacimiento() {
         return this._diaNacimiento;
     }
-    public set diaNacimiento(value: number) {
+    set diaNacimiento(value) {
         if (value < 1) {
             this._diaNacimiento = 1;
-        } else if (value > 31) {
+        }
+        else if (value > 31) {
             this._diaNacimiento = 31;
-        } else {
+        }
+        else {
             this._diaNacimiento = value;
         }
     }
-    public get nombre(): string {
+    get nombre() {
         return this._nombre;
     }
-    public set nombre(value: string) {
+    set nombre(value) {
         switch (value.length) {
             case 0:
                 this._nombre = "Pi";
                 break;
             case 1:
                 this._nombre = value + value;
-                break
+                break;
             default:
                 this._nombre = value;
         }
     }
-    dameEdad(): number {
+    dameEdad() {
         let hoy = new Date();
         let edad = hoy.getFullYear() - this._yearNacimiento;
         let m = hoy.getMonth() - this._mesNacimiento;
-
         if (m < 0 || (m === 0 && hoy.getDate() < this._diaNacimiento)) {
             edad--;
         }
-
         return edad;
     }
-    dameDatos(): string {
+    dameDatos() {
         return `Nombre: ${this._nombre}<br/>Fecha de nacimiento: ${this._diaNacimiento}/${this._mesNacimiento}/${this._yearNacimiento}<br/>`;
     }
 }
 class Mamifero extends Animal {
-    private _mesesGestacion: number = 0;
-    constructor(yearNacimiento: number, mesNacimiento: number, diaNacimiento: number, nombre: string, mesesGestacion: number) {
+    constructor(yearNacimiento, mesNacimiento, diaNacimiento, nombre, mesesGestacion) {
         super(yearNacimiento, mesNacimiento, diaNacimiento, nombre);
+        this._mesesGestacion = 0;
         this.mesesGestacion = mesesGestacion;
     }
-    public get mesesGestacion(): number {
+    get mesesGestacion() {
         return this._mesesGestacion;
     }
-    public set mesesGestacion(value: number) {
+    set mesesGestacion(value) {
         if (value < 1) {
             this._mesesGestacion = 1;
-        } else if (value > 18) {
+        }
+        else if (value > 18) {
             this._mesesGestacion = 18;
-        } else {
+        }
+        else {
             this._mesesGestacion = value;
         }
     }
-    dameDatos(): string {
+    dameDatos() {
         return `${super.dameDatos()}Meses de gestacion: ${this._mesesGestacion}<br/>`;
     }
 }
 class Primate extends Mamifero {
-    private _masaCerebral: number = 0;
-    constructor(yearNacimiento: number, mesNacimiento: number, diaNacimiento: number, nombre: string, mesesGestacion: number, masaCerebral: number) {
+    constructor(yearNacimiento, mesNacimiento, diaNacimiento, nombre, mesesGestacion, masaCerebral) {
         super(yearNacimiento, mesNacimiento, diaNacimiento, nombre, mesesGestacion);
+        this._masaCerebral = 0;
         this.masaCerebral = masaCerebral;
     }
-    public get masaCerebral(): number {
+    get masaCerebral() {
         return this._masaCerebral;
     }
-    public set masaCerebral(value: number) {
+    set masaCerebral(value) {
         if (value < 100) {
             this._masaCerebral = 100;
-        } else if (value > 2000) {
+        }
+        else if (value > 2000) {
             this._masaCerebral = 2000;
-        } else {
+        }
+        else {
             this._masaCerebral = value;
         }
     }
-    proporcionMasaCerebral(): number {
+    proporcionMasaCerebral() {
         return Number((this._masaCerebral / this.mesesGestacion).toFixed(2));
     }
-    dameDatos(): string {
+    dameDatos() {
         return `${super.dameDatos()}Proporcion masa cerebral: ${this.proporcionMasaCerebral()}<br/>`;
     }
 }
 class Humano extends Primate {
-    apellidos: string = "";
-    constructor(yearNacimiento: number, mesNacimiento: number, diaNacimiento: number, nombre: string, mesesGestacion: number, masaCerebral: number, apellidos: string) {
+    constructor(yearNacimiento, mesNacimiento, diaNacimiento, nombre, mesesGestacion, masaCerebral, apellidos) {
         super(yearNacimiento, mesNacimiento, diaNacimiento, nombre, mesesGestacion, masaCerebral);
+        this.apellidos = "";
         this.apellidos = apellidos;
     }
-    dameDatos(): string {
+    dameDatos() {
         return `${super.dameDatos()}Apellidos: ${this.apellidos}<br/>`;
     }
 }
-
 let humano1 = new Humano(2003, 12, 18, "", 9, 1800, "Grillo");
 document.writeln(humano1.dameDatos());
 document.writeln(`Edad: ${humano1.dameEdad()}`);
+//# sourceMappingURL=app.js.map
