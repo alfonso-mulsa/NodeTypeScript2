@@ -1,18 +1,25 @@
 "use strict";
 class Envio {
     constructor(idEnvio, numEnvio, precio, recibido) {
-        this.idEnvio = "";
+        this._idEnvio = "";
         this.numEnvio = BigInt(0);
         this.precio = 0;
         this.recibido = false;
-        if (!/[A-H]{2}[0-9]{2}[I-Z]{2}/.test(idEnvio)) {
-            alert(`El identificador de envio ${idEnvio} no es valido.`);
-            return;
-        }
         this.idEnvio = idEnvio;
         this.numEnvio = numEnvio;
         this.precio = precio;
         this.recibido = recibido;
+    }
+    set idEnvio(nuevoIdEnvio) {
+        if (/[A-H]{2}[0-9]{2}[I-Z]{2}/.test(nuevoIdEnvio)) {
+            this._idEnvio = nuevoIdEnvio;
+        }
+        else {
+            alert(`El identificador de envio ${nuevoIdEnvio} no es valido.`);
+        }
+    }
+    get idEnvio() {
+        return this._idEnvio;
     }
     iva() {
         return Number((this.precio * 0.21).toFixed(2));

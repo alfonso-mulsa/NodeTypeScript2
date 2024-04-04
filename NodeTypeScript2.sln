@@ -7,6 +7,8 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "GarageCoche", "GarageCoche\
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Envios", "Envios\Envios.esproj", "{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClaseFigura", "ClaseFigura\ClaseFigura.esproj", "{346DAFD9-C293-4444-B6F3-38971B29C779}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,12 @@ Global
 		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{423DEAA2-4D77-49E2-AC39-B66DF4FF91D9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346DAFD9-C293-4444-B6F3-38971B29C779}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
