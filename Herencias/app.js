@@ -77,7 +77,7 @@ class Animal {
         return edad;
     }
     dameDatos() {
-        return `Nombre: ${this._nombre}<br/>Fecha de nacimiento: ${this._diaNacimiento}/${this._mesNacimiento}/${this._yearNacimiento}<br/>`;
+        return `Nombre: ${this._nombre}<br/>Fecha de nacimiento: ${this._diaNacimiento}/${this._mesNacimiento}/${this._yearNacimiento}<br/>Edad: ${this.dameEdad()}<br/>`;
     }
 }
 class Mamifero extends Animal {
@@ -141,7 +141,6 @@ class Humano extends Primate {
         return `${super.dameDatos()}Apellidos: ${this.apellidos}<br/>`;
     }
 }
-let humano1 = new Humano(2003, 12, 18, "", 9, 1800, "Grillo");
+let humano1 = new Humano(2003, 12, 18, "Pepito", 9, 1800, "Grillo");
 document.writeln(humano1.dameDatos());
-document.writeln(`Edad: ${humano1.dameEdad()}`);
 //# sourceMappingURL=app.js.map
