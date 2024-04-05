@@ -42,6 +42,7 @@ class Persona {
         this.nombre = nombre;
         this.edad = edad;
         this._dni = this.generaDNI();
+        this.sexo = sexo;
         this.peso = peso;
         this.altura = altura;
     }
@@ -94,11 +95,12 @@ interface IValidadorSexoPersona {
 
 class ValidarSexoHM implements IValidadorSexoPersona {
     isValidSexo(persona: Persona): boolean {
-        return (persona.sexo == "M" || persona.sexo == "H");
+        return (persona.sexo == "M" || persona.sexo == "H" || persona.sexo == "NB");
     }
 }
 
 let persona1 = new Persona("Pedro", 22, "H", 77, 1.80);
+console.log(persona1);
 let validSexo = new ValidarSexoHM;
 if (validSexo.isValidSexo(persona1)) {
     document.writeln(persona1.toString());

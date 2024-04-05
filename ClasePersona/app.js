@@ -43,6 +43,7 @@ class Persona {
         this.nombre = nombre;
         this.edad = edad;
         this._dni = this.generaDNI();
+        this.sexo = sexo;
         this.peso = peso;
         this.altura = altura;
     }
@@ -89,7 +90,8 @@ class ValidarSexoHM {
         return (persona.sexo == "M" || persona.sexo == "H");
     }
 }
-let persona1 = new Persona("Pedro", 22, "pp", 77, 1.80);
+let persona1 = new Persona("Pedro", 22, "H", 77, 1.80);
+console.log(persona1);
 let validSexo = new ValidarSexoHM;
 if (validSexo.isValidSexo(persona1)) {
     document.writeln(persona1.toString());
