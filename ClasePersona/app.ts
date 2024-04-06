@@ -43,10 +43,10 @@ class Persona {
         this.edad = edad;
         this._dni = this.generaDNI();
         this.sexo = sexo;
+        //this.sexo = this.comprobarSexo(sexo);
         this.peso = peso;
         this.altura = altura;
     }
-
     calcularIMC(): number {
         let imc = this._peso / (this._altura ^ 2);
         if (imc < 20) {
@@ -61,23 +61,28 @@ class Persona {
             }
         }
     }
-
     esMayorDeEdad(): boolean {
         return (this._edad >= 18);
     }
-
-    private comprobarSexo(sexo: string): string {
-        if (sexo == "M") {
-            return sexo;
-        } else {
-            return "H";
-        }
-    }
-
+    //private comprobarSexo(sexo: string): string {
+    //    if (sexo == "M" || sexo == "NB") {
+    //        return sexo;
+    //    } else {
+    //        return "H";
+    //    }
+    //}
     toString(): string {
-        return `Nombre: ${this._nombre}<br/>Edad: ${this._edad}<br/>DNI: ${this._dni}<br/>Sexo: ${this._sexo}<br/>Peso: ${this._peso}<br/>Altura: ${this._altura}<br/>IMC: ${this.calcularIMC()}<br/>`;
+        let strEdad = "";
+        const strIMC = ["Delgado", "Peso ideal", "Sobrepeso"];
+        if (this.esMayorDeEdad()) {
+            strEdad = "(Mayor de edad)";
+        }
+        else {
+            strEdad = "(Menor de edad)";
+        }
+        return `Nombre: ${this._nombre}<br/>Edad: ${this._edad} ${strEdad}<br/>DNI: ${this._dni}<br/>Sexo: ${this._sexo}<br/>Peso: ${this._peso} Kg<br/>
+            Altura: ${this._altura} m<br/>IMC: ${strIMC[this.calcularIMC() + 1]}<br/>`;
     }
-
     private generaDNI(): string {
         const letraDni = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
         let numDni = Math.floor((Math.random() * 99999999));
@@ -85,26 +90,24 @@ class Persona {
         while (strNumDni.length < 8) {
             strNumDni = "0" + strNumDni;
         }
-        return strNumDni + letraDni[numDni % 23];
+        return strNumDni + "-" + letraDni[numDni % 23];
     }
 }
 
 interface IValidadorSexoPersona {
-    isValidSexo(persona: Persona): boolean;
+    isValid(persona: Persona): boolean;
 }
-
-class ValidarSexoHM implements IValidadorSexoPersona {
-    isValidSexo(persona: Persona): boolean {
+class ValidarSexoHMNB implements IValidadorSexoPersona {
+    isValid(persona: Persona): boolean {
         return (persona.sexo == "M" || persona.sexo == "H" || persona.sexo == "NB");
     }
 }
 
-let persona1 = new Persona("Pedro", 22, "H", 77, 1.80);
-console.log(persona1);
-let validSexo = new ValidarSexoHM;
-if (validSexo.isValidSexo(persona1)) {
+let persona1 = new Persona("Pedro", 22, "H", 60, 1.80);
+let _validarSexo: IValidadorSexoPersona = new ValidarSexoHMNB;
+if (_validarSexo.isValid(persona1)) {
     document.writeln(persona1.toString());
 }
 else {
-    window.alert(`El sexo "${persona1.sexo}" no es valido.`);
+    window.alert(`El sexo "${persona1.sexo}" de ${persona1.nombre} no es valido.`);
 }

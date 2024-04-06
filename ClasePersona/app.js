@@ -44,6 +44,7 @@ class Persona {
         this.edad = edad;
         this._dni = this.generaDNI();
         this.sexo = sexo;
+        //this.sexo = this.comprobarSexo(sexo);
         this.peso = peso;
         this.altura = altura;
     }
@@ -64,16 +65,24 @@ class Persona {
     esMayorDeEdad() {
         return (this._edad >= 18);
     }
-    comprobarSexo(sexo) {
-        if (sexo == "M") {
-            return sexo;
+    //private comprobarSexo(sexo: string): string {
+    //    if (sexo == "M" || sexo == "NB") {
+    //        return sexo;
+    //    } else {
+    //        return "H";
+    //    }
+    //}
+    toString() {
+        let strEdad = "";
+        const strIMC = ["Delgado", "Peso ideal", "Sobrepeso"];
+        if (this.esMayorDeEdad()) {
+            strEdad = "(Mayor de edad)";
         }
         else {
-            return "H";
+            strEdad = "(Menor de edad)";
         }
-    }
-    toString() {
-        return `Nombre: ${this._nombre}<br/>Edad: ${this._edad}<br/>DNI: ${this._dni}<br/>Sexo: ${this._sexo}<br/>Peso: ${this._peso}<br/>Altura: ${this._altura}<br/>IMC: ${this.calcularIMC()}<br/>`;
+        return `Nombre: ${this._nombre}<br/>Edad: ${this._edad} ${strEdad}<br/>DNI: ${this._dni}<br/>Sexo: ${this._sexo}<br/>Peso: ${this._peso} Kg<br/>
+            Altura: ${this._altura} m<br/>IMC: ${strIMC[this.calcularIMC() + 1]}<br/>`;
     }
     generaDNI() {
         const letraDni = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
@@ -82,21 +91,20 @@ class Persona {
         while (strNumDni.length < 8) {
             strNumDni = "0" + strNumDni;
         }
-        return strNumDni + letraDni[numDni % 23];
+        return strNumDni + "-" + letraDni[numDni % 23];
     }
 }
-class ValidarSexoHM {
-    isValidSexo(persona) {
-        return (persona.sexo == "M" || persona.sexo == "H");
+class ValidarSexoHMNB {
+    isValid(persona) {
+        return (persona.sexo == "M" || persona.sexo == "H" || persona.sexo == "NB");
     }
 }
-let persona1 = new Persona("Pedro", 22, "H", 77, 1.80);
-console.log(persona1);
-let validSexo = new ValidarSexoHM;
-if (validSexo.isValidSexo(persona1)) {
+let persona1 = new Persona("Pedro", 22, "H", 60, 1.80);
+let _validarSexo = new ValidarSexoHMNB;
+if (_validarSexo.isValid(persona1)) {
     document.writeln(persona1.toString());
 }
 else {
-    window.alert(`El sexo "${persona1.sexo}" no es valido.`);
+    window.alert(`El sexo "${persona1.sexo}" de ${persona1.nombre} no es valido.`);
 }
 //# sourceMappingURL=app.js.map
