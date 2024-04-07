@@ -13,6 +13,8 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Herencias", "Herencias\Here
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClasePersona", "ClasePersona\ClasePersona.esproj", "{1FEE0CB0-7124-471D-8A7F-33F3DE3F1BB6}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClaseElectrodomestico", "ClaseElectrodomestico\ClaseElectrodomestico.esproj", "{4AFC241C-8763-4704-B2A2-6D336B80ED2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,12 @@ Global
 		{1FEE0CB0-7124-471D-8A7F-33F3DE3F1BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FEE0CB0-7124-471D-8A7F-33F3DE3F1BB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FEE0CB0-7124-471D-8A7F-33F3DE3F1BB6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFC241C-8763-4704-B2A2-6D336B80ED2B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
