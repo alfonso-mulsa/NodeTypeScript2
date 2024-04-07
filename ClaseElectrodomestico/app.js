@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const precioxDef = 100;
 const colorxDef = "Blanco";
 const consumoxDef = "F";
@@ -22,13 +21,13 @@ class Electrodomestico {
         return this._color;
     }
     set color(value) {
-        this._color = value;
+        this._color = this.comprobarColor(value);
     }
     get consumo() {
         return this._consumo;
     }
     set consumo(value) {
-        this._consumo = value;
+        this._consumo = this.comprobarConsumoEnergetico(value);
     }
     get peso() {
         return this._peso;
@@ -47,8 +46,8 @@ class Electrodomestico {
         this._consumo = consumoxDef;
         this._peso = pesoxDef;
         this.precioBase = precioBase;
-        this.color = this.comprobarColor(color);
-        this.consumo = this.comprobarConsumoEnergetico(consumo);
+        this.color = color;
+        this.consumo = consumo;
         this.peso = peso;
     }
     comprobarColor(color) {
@@ -81,13 +80,13 @@ class Electrodomestico {
             case "E": precio += 30;
             case "F": precio += 10;
         }
-        if (this._peso <= 0 && this._peso <= 19) {
+        if (this._peso <= 19) {
             precio += 10;
         }
-        if (this._peso <= 20 && this._peso <= 49) {
+        if (this._peso >= 20 && this._peso <= 49) {
             precio += 50;
         }
-        if (this._peso <= 50 && this._peso <= 79) {
+        if (this._peso >= 50 && this._peso <= 79) {
             precio += 80;
         }
         if (this._peso >= 80) {
@@ -158,4 +157,6 @@ class Television extends Electrodomestico {
         return precio;
     }
 }
+let nuevoElec = new Electrodomestico(0, "Rojo", "e", 0);
+console.log(nuevoElec);
 //# sourceMappingURL=app.js.map

@@ -1,5 +1,3 @@
-import exp from "constants";
-
 const precioxDef: number = 100;
 const colorxDef: string = "Blanco";
 const consumoxDef: string = "F";
@@ -24,14 +22,14 @@ class Electrodomestico {
         return this._color;
     }
     public set color(value: string) {
-        this._color = value;
+        this._color = this.comprobarColor(value);
     }
     private _consumo: string = consumoxDef;
     public get consumo(): string {
         return this._consumo;
     }
     public set consumo(value: string) {
-        this._consumo = value;
+        this._consumo = this.comprobarConsumoEnergetico(value);
     }
     private _peso: number = pesoxDef;
     public get peso(): number {
@@ -47,8 +45,8 @@ class Electrodomestico {
     }
     constructor(precioBase: number, color: string, consumo: string, peso: number) {
         this.precioBase = precioBase;
-        this.color = this.comprobarColor(color);
-        this.consumo = this.comprobarConsumoEnergetico(consumo);
+        this.color = color;
+        this.consumo = consumo;
         this.peso = peso;
     }
     private comprobarColor(color: string): string {
@@ -81,13 +79,13 @@ class Electrodomestico {
             case "E": precio += 30;
             case "F": precio += 10;
         }
-        if (this._peso<=0 && this._peso <= 19) {
+        if (this._peso <= 19) {
             precio += 10;
         }
-        if (this._peso<=20 && this._peso <= 49) {
+        if (this._peso>=20 && this._peso <= 49) {
             precio += 50;
         }
-        if (this._peso<=50 && this._peso <= 79) {
+        if (this._peso>=50 && this._peso <= 79) {
             precio += 80;
         }
         if (this._peso>=80) {
@@ -158,3 +156,6 @@ class Television extends Electrodomestico {
         return precio;
     }
 }
+
+let nuevoElec = new Electrodomestico(0, "Rojo", "e", 0);
+console.log(nuevoElec);
