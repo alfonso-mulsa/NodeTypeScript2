@@ -73,12 +73,23 @@ class Electrodomestico {
     precioFinal() {
         let precio = this._precioBase;
         switch (this._consumo) {
-            case "A": precio += 100;
-            case "B": precio += 80;
-            case "C": precio += 60;
-            case "D": precio += 50;
-            case "E": precio += 30;
-            case "F": precio += 10;
+            case "A":
+                precio += 100;
+                break;
+            case "B":
+                precio += 80;
+                break;
+            case "C":
+                precio += 60;
+                break;
+            case "D":
+                precio += 50;
+                break;
+            case "E":
+                precio += 30;
+                break;
+            case "F":
+                precio += 10;
         }
         if (this._peso <= 19) {
             precio += 10;
