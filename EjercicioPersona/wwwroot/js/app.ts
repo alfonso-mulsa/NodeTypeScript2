@@ -55,15 +55,15 @@ class MostrarPersonaInglesa implements IMostradorPersona {
         if (persona.activo) {
             estaActivo = "Si";
         }
-        return `<p class="my-1"><strong>Campos obligatorios</strong></p>
-                <p class="mb-1">Identificativo: ${persona.identificativo}</p>
-                <p class="mb-1">Primer Nombre: ${persona.primerNombre}</p>
-                <p class="mb-1">Nombre Intermedio: ${persona.nombreIntermedio}</p>
-                <p class="mb-3">Apellido 1: ${persona.apellido1}</p>
-                <p class="mb-1"><strong>Campos optativos</strong></p>
-                <p class="mb-1">Apellido 2: ${persona.apellido2}</p>
-                <p class="mb-1">Año Nacimiento: ${persona.anyoNacimiento}</p>
-                <p class="mb-1">Activo: ${estaActivo}</p>`;
+        return `<p class="my-1"><strong><u>Required fields</u></strong></p>
+                <p class="mb-1">Identification: ${persona.identificativo}</p>
+                <p class="mb-1">First Name: ${persona.primerNombre}</p>
+                <p class="mb-1">Intermediate Name: ${persona.nombreIntermedio}</p>
+                <p class="mb-3">Last name: ${persona.apellido1}</p>
+                <p class="mb-1"><strong><u>Optional fields</u></strong></p>
+                <p class="mb-1">Last name 2: ${persona.apellido2}</p>
+                <p class="mb-1">Birth Year: ${persona.anyoNacimiento}</p>
+                <p class="mb-1">Active: ${estaActivo}</p>`;
     }
 }
 class MostrarPersonaEspanyola implements IMostradorPersona {
@@ -72,12 +72,12 @@ class MostrarPersonaEspanyola implements IMostradorPersona {
         if (persona.activo) {
             estaActivo = "Si";
         }
-        return `<p class="my-1"><strong>Campos obligatorios</strong></p>
+        return `<p class="my-1"><u><strong>Campos obligatorios</u></strong></p>
                 <p class="mb-1">Identificativo: ${persona.identificativo}</p>
                 <p class="mb-1">Primer Nombre: ${persona.primerNombre}</p>
-                <p class="mb-1">Apellido 1: ${persona.apellido1}</p>
-                <p class="mb-3">Apellido 2: ${persona.apellido2}</p>
-                <p class="mb-1"><strong>Campos optativos</strong></p>
+                <p class="mb-1">1er Apellido: ${persona.apellido1}</p>
+                <p class="mb-3">2o Apellido: ${persona.apellido2}</p>
+                <p class="mb-1"><strong><u>Campos optativos</u></strong></p>
                 <p class="mb-1">Nombre Intermedio: ${persona.nombreIntermedio}</p>
                 <p class="mb-1">Año Nacimiento: ${persona.anyoNacimiento}</p>
                 <p class="mb-1">Activo: ${estaActivo}</p>`;
@@ -87,7 +87,6 @@ class MostrarPersonaEspanyola implements IMostradorPersona {
 (<HTMLElement>document.getElementById("idBotonMostrar")).addEventListener("click", visualizar);
 function visualizar() {
     let nacionalidad = (<HTMLInputElement>document.querySelector('input[name="nacionalidad"]:checked')).value;
-    //console.log(nacionalidad);
     let nombre = (<HTMLInputElement>document.getElementById("idPrimerNombre")).value;
     let nomInt = (<HTMLInputElement>document.getElementById("idNombreIntermedio")).value;
     let apell1 = (<HTMLInputElement>document.getElementById("idApellido1")).value;
@@ -121,6 +120,6 @@ function visualizar() {
     }
     else {
         (<HTMLElement>document.getElementById("ventanaVerde")).innerHTML = "";
-        (<HTMLElement>document.getElementById("ventanaRoja")).innerHTML = '<p class="text-center mb-0">NO VALIDA</P>';
+        (<HTMLElement>document.getElementById("ventanaRoja")).innerHTML = '<p class="text-center mb-0">DATOS INCOMPLETOS</P>';
     }
 }

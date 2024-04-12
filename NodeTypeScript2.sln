@@ -15,7 +15,9 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClasePersona", "ClasePerson
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClaseElectrodomestico", "ClaseElectrodomestico\ClaseElectrodomestico.esproj", "{4AFC241C-8763-4704-B2A2-6D336B80ED2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjercicioPersona", "EjercicioPersona\EjercicioPersona.csproj", "{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EjercicioPersona", "EjercicioPersona\EjercicioPersona.csproj", "{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Ejer06Arrays", "Ejer06Arrays\Ejer06Arrays.esproj", "{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,12 @@ Global
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

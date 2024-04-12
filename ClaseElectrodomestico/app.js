@@ -6,6 +6,12 @@ const pesoxDef = 5;
 const cargaxDef = 5;
 const resolucionxDef = 20;
 class Electrodomestico {
+    constructor() {
+        this._precioBase = precioxDef;
+        this._color = colorxDef;
+        this._consumo = consumoxDef;
+        this._peso = pesoxDef;
+    }
     get precioBase() {
         return this._precioBase;
     }
@@ -40,16 +46,12 @@ class Electrodomestico {
             this._peso = value;
         }
     }
-    constructor(precioBase, color, consumo, peso) {
-        this._precioBase = precioxDef;
-        this._color = colorxDef;
-        this._consumo = consumoxDef;
-        this._peso = pesoxDef;
-        this.precioBase = precioBase;
-        this.color = color;
-        this.consumo = consumo;
-        this.peso = peso;
-    }
+    //constructor(precioBase: number, color: string, consumo: string, peso: number) {
+    //    this.precioBase = precioBase;
+    //    this.color = color;
+    //    this.consumo = consumo;
+    //    this.peso = peso;
+    //}
     comprobarColor(color) {
         if (color.toUpperCase() == "NEGRO" || color.toUpperCase() == "ROJO" || color.toUpperCase() == "AZUL" || color.toUpperCase() == "GRIS") {
             return color.toUpperCase();
@@ -106,7 +108,21 @@ class Electrodomestico {
         return precio;
     }
 }
+class CrearElectrodomestico {
+    crearElectrodomestico(precioBase, color, consumo, peso) {
+        let nuevoElec = new Electrodomestico;
+        nuevoElec.precioBase = precioBase;
+        nuevoElec.color = color;
+        nuevoElec.consumo = consumo;
+        nuevoElec.peso = peso;
+        return nuevoElec;
+    }
+}
 class Lavadora extends Electrodomestico {
+    constructor() {
+        super(...arguments);
+        this._carga = cargaxDef;
+    }
     get carga() {
         return this._carga;
     }
@@ -118,11 +134,10 @@ class Lavadora extends Electrodomestico {
             this._carga = value;
         }
     }
-    constructor(precioBase, color, consumo, peso, carga) {
-        super(precioBase, color, consumo, peso);
-        this._carga = cargaxDef;
-        this.carga = carga;
-    }
+    //constructor(precioBase: number, color: string, consumo: string, peso: number, carga: number) {
+    //    super(precioBase, color, consumo, peso);
+    //    this.carga = carga;
+    //}
     precioFinal() {
         if (this._carga > 30) {
             return super.precioFinal() + 50;
@@ -132,7 +147,25 @@ class Lavadora extends Electrodomestico {
         }
     }
 }
+class CrearLavadora {
+    crearLavadora(precioBase, color, consumo, peso, carga) {
+        let _crearElec = new CrearElectrodomestico;
+        let nuevoElec = _crearElec.crearElectrodomestico(precioBase, color, consumo, peso);
+        let nuevaLava = new Lavadora();
+        nuevaLava.precioBase = nuevoElec.precioBase;
+        nuevaLava.color = nuevoElec.color;
+        nuevaLava.consumo = nuevoElec.consumo;
+        nuevaLava.peso = nuevoElec.peso;
+        nuevaLava.carga = carga;
+        return nuevaLava;
+    }
+}
 class Television extends Electrodomestico {
+    constructor() {
+        super(...arguments);
+        this._resolucion = resolucionxDef;
+        this._sintonizadorTDT = false;
+    }
     get resolucion() {
         return this._resolucion;
     }
@@ -150,13 +183,11 @@ class Television extends Electrodomestico {
     set sintonizadorTDT(value) {
         this._sintonizadorTDT = value;
     }
-    constructor(precioBase, color, consumo, peso, resolucion, sintonizadorTDT) {
-        super(precioBase, color, consumo, peso);
-        this._resolucion = resolucionxDef;
-        this._sintonizadorTDT = false;
-        this.resolucion = resolucion;
-        this.sintonizadorTDT = sintonizadorTDT;
-    }
+    //constructor(precioBase: number, color: string, consumo: string, peso: number, resolucion: number, sintonizadorTDT: boolean) {
+    //    super(precioBase, color, consumo, peso);
+    //    this.resolucion = resolucion;
+    //    this.sintonizadorTDT = sintonizadorTDT;
+    //}
     precioFinal() {
         let precio = super.precioFinal();
         if (this._resolucion > 40) {
@@ -168,6 +199,27 @@ class Television extends Electrodomestico {
         return precio;
     }
 }
-let nuevoElec = new Electrodomestico(0, "Rojo", "e", 0);
-console.log(nuevoElec);
+class CrearTelevision {
+    crearTelevision(precioBase, color, consumo, peso, resolucion, sintonizadorTDT) {
+        let _crearElec = new CrearElectrodomestico;
+        let nuevoElec = _crearElec.crearElectrodomestico(precioBase, color, consumo, peso);
+        let nuevaTele = new Television();
+        nuevaTele.precioBase = nuevoElec.precioBase;
+        nuevaTele.color = nuevoElec.color;
+        nuevaTele.consumo = nuevoElec.consumo;
+        nuevaTele.peso = nuevoElec.peso;
+        nuevaTele.resolucion = resolucion;
+        nuevaTele.sintonizadorTDT = sintonizadorTDT;
+        return nuevaTele;
+    }
+}
+let _crearElec = new CrearElectrodomestico();
+let newElec = _crearElec.crearElectrodomestico(82, "Rojo", "d", 0);
+console.log("Electrodomestico: " + newElec.color);
+let _crearLava = new CrearLavadora();
+let newLava = _crearLava.crearLavadora(318, "Gris", "e", 35, 9);
+console.log("Lavadora: " + newLava.color);
+let _crearTele = new CrearTelevision();
+let newTele = _crearTele.crearTelevision(250, "Negro", "f", 12, 32, true);
+console.log("Television: " + newTele.color);
 //# sourceMappingURL=app.js.map
