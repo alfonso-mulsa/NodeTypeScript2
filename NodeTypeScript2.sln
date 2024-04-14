@@ -17,7 +17,11 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ClaseElectrodomestico", "Cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EjercicioPersona", "EjercicioPersona\EjercicioPersona.csproj", "{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaseJaulaBichos", "ClaseJaulaBichos\ClaseJaulaBichos.csproj", "{BDCE1079-95AF-4670-B817-E535367B9691}"
+=======
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Ejer06Arrays", "Ejer06Arrays\Ejer06Arrays.esproj", "{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}"
+>>>>>>> 2d6e252b67d76fec5e572c659acad5df4f785fed
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +69,19 @@ Global
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DD4AF0D-D0D1-41F8-AD4D-1BED0481C2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{BDCE1079-95AF-4670-B817-E535367B9691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDCE1079-95AF-4670-B817-E535367B9691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDCE1079-95AF-4670-B817-E535367B9691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDCE1079-95AF-4670-B817-E535367B9691}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBE9CF5-31C6-4683-ACF9-9505E82A317A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+>>>>>>> 2d6e252b67d76fec5e572c659acad5df4f785fed
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

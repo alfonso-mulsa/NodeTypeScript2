@@ -59,7 +59,7 @@ var MostrarPersonaInglesa = /** @class */ (function () {
         if (persona.activo) {
             estaActivo = "Si";
         }
-        return "<p class=\"my-1\"><strong>Campos obligatorios</strong></p>\n                <p class=\"mb-1\">Identificativo: ".concat(persona.identificativo, "</p>\n                <p class=\"mb-1\">Primer Nombre: ").concat(persona.primerNombre, "</p>\n                <p class=\"mb-1\">Nombre Intermedio: ").concat(persona.nombreIntermedio, "</p>\n                <p class=\"mb-3\">Apellido 1: ").concat(persona.apellido1, "</p>\n                <p class=\"mb-1\"><strong>Campos optativos</strong></p>\n                <p class=\"mb-1\">Apellido 2: ").concat(persona.apellido2, "</p>\n                <p class=\"mb-1\">A\u00F1o Nacimiento: ").concat(persona.anyoNacimiento, "</p>\n                <p class=\"mb-1\">Activo: ").concat(estaActivo, "</p>");
+        return "<p class=\"my-1\"><strong><u>Required fields</u></strong></p>\n                <p class=\"mb-1\">Identification: ".concat(persona.identificativo, "</p>\n                <p class=\"mb-1\">First Name: ").concat(persona.primerNombre, "</p>\n                <p class=\"mb-1\">Intermediate Name: ").concat(persona.nombreIntermedio, "</p>\n                <p class=\"mb-3\">Last name: ").concat(persona.apellido1, "</p>\n                <p class=\"mb-1\"><strong><u>Optional fields</u></strong></p>\n                <p class=\"mb-1\">Last name 2: ").concat(persona.apellido2, "</p>\n                <p class=\"mb-1\">Birth Year: ").concat(persona.anyoNacimiento, "</p>\n                <p class=\"mb-1\">Active: ").concat(estaActivo, "</p>");
     };
     return MostrarPersonaInglesa;
 }());
@@ -71,14 +71,13 @@ var MostrarPersonaEspanyola = /** @class */ (function () {
         if (persona.activo) {
             estaActivo = "Si";
         }
-        return "<p class=\"my-1\"><strong>Campos obligatorios</strong></p>\n                <p class=\"mb-1\">Identificativo: ".concat(persona.identificativo, "</p>\n                <p class=\"mb-1\">Primer Nombre: ").concat(persona.primerNombre, "</p>\n                <p class=\"mb-1\">Apellido 1: ").concat(persona.apellido1, "</p>\n                <p class=\"mb-3\">Apellido 2: ").concat(persona.apellido2, "</p>\n                <p class=\"mb-1\"><strong>Campos optativos</strong></p>\n                <p class=\"mb-1\">Nombre Intermedio: ").concat(persona.nombreIntermedio, "</p>\n                <p class=\"mb-1\">A\u00F1o Nacimiento: ").concat(persona.anyoNacimiento, "</p>\n                <p class=\"mb-1\">Activo: ").concat(estaActivo, "</p>");
+        return "<p class=\"my-1\"><u><strong>Campos obligatorios</u></strong></p>\n                <p class=\"mb-1\">Identificativo: ".concat(persona.identificativo, "</p>\n                <p class=\"mb-1\">Primer Nombre: ").concat(persona.primerNombre, "</p>\n                <p class=\"mb-1\">1er Apellido: ").concat(persona.apellido1, "</p>\n                <p class=\"mb-3\">2o Apellido: ").concat(persona.apellido2, "</p>\n                <p class=\"mb-1\"><strong><u>Campos optativos</u></strong></p>\n                <p class=\"mb-1\">Nombre Intermedio: ").concat(persona.nombreIntermedio, "</p>\n                <p class=\"mb-1\">A\u00F1o Nacimiento: ").concat(persona.anyoNacimiento, "</p>\n                <p class=\"mb-1\">Activo: ").concat(estaActivo, "</p>");
     };
     return MostrarPersonaEspanyola;
 }());
 document.getElementById("idBotonMostrar").addEventListener("click", visualizar);
 function visualizar() {
     var nacionalidad = document.querySelector('input[name="nacionalidad"]:checked').value;
-    //console.log(nacionalidad);
     var nombre = document.getElementById("idPrimerNombre").value;
     var nomInt = document.getElementById("idNombreIntermedio").value;
     var apell1 = document.getElementById("idApellido1").value;
@@ -108,7 +107,7 @@ function visualizar() {
     }
     else {
         document.getElementById("ventanaVerde").innerHTML = "";
-        document.getElementById("ventanaRoja").innerHTML = '<p class="text-center mb-0">NO VALIDA</P>';
+        document.getElementById("ventanaRoja").innerHTML = '<p class="text-center mb-0">DATOS INCOMPLETOS</P>';
     }
 }
 //# sourceMappingURL=app.js.map
