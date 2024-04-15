@@ -14,12 +14,18 @@ function anadirNombre() {
     }
     listaNombres.innerHTML = "";
     contNombres = 0;
-    mapaNombres.forEach(mostrarNombres);
+    //mapaNombres.forEach(mostrarNombres);
+    for (let [nombre, contador] of mapaNombres.entries()) {
+        let nuevaLinea = document.createElement("li");
+        nuevaLinea.textContent = `${nombre}: ${contador}`;
+        listaNombres.appendChild(nuevaLinea);
+        contNombres += Number(contador);
+    }
     let contRepetidos = contNombres - mapaNombres.size;
     let porcentaje = Number(((contRepetidos * 100) / contNombres).toFixed(2));
     let textoResultado = `<p>Num. nombres repetidos: ${contRepetidos}</p>
                           <p>Num. nombres introducidos: ${mapaNombres.size}</p>
-                          <p>% nombres repetidos: ${porcentaje}`;
+                          <p>Nombres repetidos: ${porcentaje}%`;
     document.getElementById("resultado").innerHTML = textoResultado;
 }
 function mostrarNombres(contador, nombre, map) {
