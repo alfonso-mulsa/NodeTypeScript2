@@ -11,9 +11,6 @@
 interface IOrdenableBicho {
     ordena(BichoA: Bicho, BichoB: Bicho): number;
 }
-interface IMostrable {
-    muestra(BichoA: Bicho): void;
-}
 class OrdenaPorNombre implements IOrdenableBicho {
     ordena(BichoA: Bicho, BichoB: Bicho): number {
         return BichoA.nombre.localeCompare(BichoB.nombre);
@@ -28,6 +25,9 @@ class OrdenaPorPeso implements IOrdenableBicho {
     ordena(BichoA: Bicho, BichoB: Bicho): number {
         return BichoA.peso - BichoB.peso;
     }
+}
+interface IMostrable {
+    muestra(BichoA: Bicho): void;
 }
 class MuestraTipo01 implements IMostrable {
     muestra(BichoA: Bicho): void {
@@ -94,7 +94,7 @@ miJaulaABC.add(koala);
 console.log("Mostrador 01:")
 miJaulaABC.muestra();
 miJaulaABC.ordena();
-console.log("Ordenar por nombre:")
+console.log("Ordenar por nombre:");
 miJaulaABC.muestra();
 console.log("\n");
 
@@ -103,7 +103,7 @@ miJaulaABC.Mostrador = mostrador02;
 console.log("Mostrador 02:")
 miJaulaABC.muestra();
 miJaulaABC.ordena();
-console.log("Ordenar por edad:")
+console.log("Ordenar por edad:");
 miJaulaABC.muestra();
 console.log("\n");
 
@@ -112,6 +112,6 @@ miJaulaABC.Mostrador = mostrador01;
 console.log("Mostrador 01:")
 miJaulaABC.muestra();
 miJaulaABC.ordena();
-console.log("Ordenar por peso:")
+console.log("Ordenar por peso:");
 miJaulaABC.muestra();
 console.log("\n");
