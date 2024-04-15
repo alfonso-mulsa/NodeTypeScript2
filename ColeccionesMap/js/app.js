@@ -16,10 +16,7 @@ function anadirNombre() {
     contNombres = 0;
     //mapaNombres.forEach(mostrarNombres);
     for (let [nombre, contador] of mapaNombres.entries()) {
-        let nuevaLinea = document.createElement("li");
-        nuevaLinea.textContent = `${nombre} (${contador})`;
-        listaNombres.appendChild(nuevaLinea);
-        contNombres += Number(contador);
+        mostrarNombres(contador, nombre, mapaNombres);
     }
     let contRepetidos = contNombres - mapaNombres.size;
     let porcentaje = Number(((contRepetidos * 100) / contNombres).toFixed(2));
@@ -30,7 +27,7 @@ function anadirNombre() {
 }
 function mostrarNombres(contador, nombre, map) {
     let nuevaLinea = document.createElement("li");
-    nuevaLinea.textContent = `${nombre}: ${contador}`;
+    nuevaLinea.textContent = `${nombre} (${contador})`;
     listaNombres.appendChild(nuevaLinea);
     contNombres += Number(contador);
 }

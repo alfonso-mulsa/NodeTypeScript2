@@ -5,7 +5,6 @@ var listaNombres = (<HTMLElement>document.getElementById("listaNombres"));
 
 function anadirNombre() {
     let nuevoNombre = (<HTMLInputElement>document.getElementById("entradaNombre")).value;
-
     if (mapaNombres.has(nuevoNombre)) {
         let valor = Number(mapaNombres.get(nuevoNombre));
         mapaNombres.set(nuevoNombre, valor + 1);
@@ -13,15 +12,11 @@ function anadirNombre() {
     else {
         mapaNombres.set(nuevoNombre, 1);
     }
-
     listaNombres.innerHTML = "";
     contNombres = 0;
     //mapaNombres.forEach(mostrarNombres);
     for (let [nombre, contador] of mapaNombres.entries()) {
-        let nuevaLinea = (<HTMLElement>document.createElement("li"));
-        nuevaLinea.textContent = `${nombre} (${contador})`;
-        listaNombres.appendChild(nuevaLinea);
-        contNombres += Number(contador);
+        mostrarNombres(contador, nombre, mapaNombres);
     }
     let contRepetidos = contNombres - mapaNombres.size;
     let porcentaje = Number(((contRepetidos * 100) / contNombres).toFixed(2));
@@ -30,10 +25,9 @@ function anadirNombre() {
                           <p>Nombres repetidos: ${porcentaje}%`;
     (<HTMLElement>document.getElementById("resultado")).innerHTML = textoResultado;
 }
-
-function mostrarNombres(contador: number, nombre: string, map: any) {
+function mostrarNombres(contador: number, nombre: string, map: Map<string, number>) {
     let nuevaLinea = (<HTMLElement>document.createElement("li"));
-    nuevaLinea.textContent = `${nombre}: ${contador}`;
+    nuevaLinea.textContent = `${nombre} (${contador})`;
     listaNombres.appendChild(nuevaLinea);
     contNombres += Number(contador);
 }
