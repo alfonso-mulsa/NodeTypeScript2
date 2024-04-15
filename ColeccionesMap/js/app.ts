@@ -19,7 +19,7 @@ function anadirNombre() {
     //mapaNombres.forEach(mostrarNombres);
     for (let [nombre, contador] of mapaNombres.entries()) {
         let nuevaLinea = (<HTMLElement>document.createElement("li"));
-        nuevaLinea.textContent = `${nombre}: ${contador}`;
+        nuevaLinea.textContent = `${nombre} (${contador})`;
         listaNombres.appendChild(nuevaLinea);
         contNombres += Number(contador);
     }
