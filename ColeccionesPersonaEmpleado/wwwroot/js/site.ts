@@ -21,13 +21,25 @@ var sumaEdadesEmpleados = 0;
 var sumaExperienciaEmpleados = 0;
 (<HTMLButtonElement>document.getElementById("boton1")).addEventListener("click", anadirPersona);
 (<HTMLButtonElement>document.getElementById("boton2")).addEventListener("click", anadirEmpleado);
+
 function anadirPersona() {
     let nuevoNombre = (<HTMLInputElement>document.getElementById("entradaNombre1")).value;
+    if (nuevoNombre == "") {
+        alert("Hay que introducir un nombre.");
+        return;
+    }
     let nuevaEdad = Number((<HTMLInputElement>document.getElementById("entradaEdad1")).value);
+    if (nuevaEdad == 0) {
+        alert("Hay que introducir la edad.");
+        return;
+    }
     let nuevaPersona = new Persona(nuevoNombre, nuevaEdad);
 
-    document.getElementById("ventanaLista1").classList.add("bg-light");
-    document.getElementById("resultado1").classList.add("bg-light");
+    let _ventana1 = document.getElementById("ventana1");
+    console.log("<" + _ventana1.innerHTML + ">");
+    if (_ventana1.innerHTML == "") {
+        creaVentanas(_ventana1, "1");
+    }
 
     conjuntoPersonas.add(nuevaPersona);
     let nuevoLi = document.createElement("li");
@@ -37,15 +49,36 @@ function anadirPersona() {
     let mediaEdad = Number((sumaEdadesPersonas /conjuntoPersonas.size).toFixed(2));
     let textoResultado = `<p>Edad media: ${mediaEdad}</p>`;
     document.getElementById("resultado1").innerHTML = textoResultado;
+
+    vaciaInput("entradaNombre1");
+    vaciaInput("entradaEdad1");
 }
 function anadirEmpleado() {
     let nuevaIdentificacion = (<HTMLInputElement>document.getElementById("entradaIdentificador2")).value;
+    if (nuevaIdentificacion == "") {
+        alert("Hay que introducir una identificación.");
+        return;
+    }
     let nuevoNombre = (<HTMLInputElement>document.getElementById("entradaNombre2")).value;
+    if (nuevoNombre == "") {
+        alert("Hay que introducir un nombre.");
+        return;
+    }
     let nuevaEdad = Number((<HTMLInputElement>document.getElementById("entradaEdad2")).value);
+    if (nuevaEdad == 0) {
+        alert("Hay que introducir la edad.");
+        return;
+    }
     let nuevaExperiencia = Number((<HTMLInputElement>document.getElementById("entradaExperiencia2")).value);
+    if (nuevaExperiencia == 0) {
+        alert("Hay que introducir la experiencia.");
+        return;
+    }
 
-    document.getElementById("ventanaLista2").classList.add("bg-light");
-    document.getElementById("resultado2").classList.add("bg-light");
+    let _ventana2 = document.getElementById("ventana2");
+    if (_ventana2.innerHTML == "") {
+        creaVentanas(_ventana2, "2");
+    }
 
     if (!conjuntoEmpleados.has(nuevaIdentificacion)) {
         let nuevoEmpleado = new Empleado(nuevoNombre, nuevaEdad, nuevaExperiencia);
@@ -60,4 +93,26 @@ function anadirEmpleado() {
                               <p>Experiencia acumulada: ${sumaExperienciaEmpleados}</p>`;
         document.getElementById("resultado2").innerHTML = textoResultado;
     }
+    vaciaInput("entradaIdentificador2");
+    vaciaInput("entradaNombre2");
+    vaciaInput("entradaEdad2");
+    vaciaInput("entradaExperiencia2");
+}
+function vaciaInput(id: string) {
+    (<HTMLInputElement>document.getElementById(id)).value = "";
+}
+function creaVentanas(ventanaPadre: HTMLElement, strVentana: string ) {
+    let _div1 = document.createElement("div");
+    _div1.id = `ventanaLista${strVentana}`;
+    _div1.classList.value = "container col-lg-4 mt-3 py-2 bg-light";
+    ventanaPadre.appendChild(_div1);
+
+    let _ul1 = document.createElement("ul");
+    _ul1.id = `listaNombres${strVentana}`;
+    _div1.appendChild(_ul1);
+
+    let _div2 = document.createElement("div");
+    _div2.id = `resultado${strVentana}`;
+    _div2.classList.value = "container col-lg-4 mt-3 py-2 bg-light";
+    ventanaPadre.appendChild(_div2);
 }
