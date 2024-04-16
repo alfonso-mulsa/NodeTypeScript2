@@ -47,7 +47,7 @@ function anadirPersona() {
     document.getElementById("listaNombres1").appendChild(nuevoLi);
     sumaEdadesPersonas += nuevaEdad;
     let mediaEdad = Number((sumaEdadesPersonas /conjuntoPersonas.size).toFixed(2));
-    let textoResultado = `<p>Edad media: ${mediaEdad}</p>`;
+    let textoResultado = `<p class="mb-0">Edad media: ${mediaEdad}</p>`;
     document.getElementById("resultado1").innerHTML = textoResultado;
 
     vaciaInput("entradaNombre1");
@@ -89,8 +89,8 @@ function anadirEmpleado() {
         sumaEdadesEmpleados += nuevaEdad;
         sumaExperienciaEmpleados += nuevaExperiencia;
         let mediaEdad = Number((sumaEdadesEmpleados / conjuntoEmpleados.size).toFixed(2));
-        let textoResultado = `<p>Edad media: ${mediaEdad}</p>
-                              <p>Experiencia acumulada: ${sumaExperienciaEmpleados}</p>`;
+        let textoResultado = `<p class="mb-1>Edad media: ${mediaEdad}</p>
+                              <p class="mb-0">Experiencia acumulada: ${sumaExperienciaEmpleados}</p>`;
         document.getElementById("resultado2").innerHTML = textoResultado;
     }
     vaciaInput("entradaIdentificador2");
@@ -109,6 +109,7 @@ function creaVentanas(ventanaPadre: HTMLElement, strVentana: string ) {
 
     let _ul1 = document.createElement("ul");
     _ul1.id = `listaNombres${strVentana}`;
+    _ul1.classList.add("mb-0");
     _div1.appendChild(_ul1);
 
     let _div2 = document.createElement("div");
