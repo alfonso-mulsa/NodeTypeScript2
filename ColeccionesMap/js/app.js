@@ -12,6 +12,8 @@ function anadirNombre() {
     else {
         mapaNombres.set(nuevoNombre, 1);
     }
+    document.getElementById("ventanaLista").classList.add("bg-light");
+    document.getElementById("resultado").classList.add("bg-light");
     listaNombres.innerHTML = "";
     contNombres = 0;
     //mapaNombres.forEach(mostrarNombres);
