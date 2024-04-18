@@ -10,11 +10,42 @@ class Empleado extends Persona {
         this.experiencia = experiencia;
     }
 }
-var conjuntoPersonas = new Set();
-var conjuntoEmpleados = new Map();
-var sumaEdadesPersonas = 0;
-var sumaEdadesEmpleados = 0;
-var sumaExperienciaEmpleados = 0;
+class ConjuntoPersonas {
+    constructor() {
+        this.conjunto = new Set;
+        this.sumaEdades = 0;
+    }
+    ponPersona(item) {
+        this.conjunto.add(item);
+        this.sumaEdades += item.edad;
+    }
+    edadMedia() {
+        return Number((this.sumaEdades / this.conjunto.size).toFixed(2));
+    }
+}
+class ColeccionEmpleados {
+    constructor() {
+        this.coleccion = new Map;
+        this.sumaEdades = 0;
+        this.sumaExperiencias = 0;
+    }
+    ponEmpleado(id, item) {
+        if (!this.coleccion.has(id)) {
+            this.coleccion.set(id, item);
+            this.sumaEdades += item.edad;
+            this.sumaExperiencias += item.experiencia;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    edadMedia() {
+        return Number((this.sumaEdades / this.coleccion.size).toFixed(2));
+    }
+}
+var grupoPersonas = new ConjuntoPersonas();
+var grupoEmpleados = new ColeccionEmpleados();
 document.getElementById("boton1").addEventListener("click", anadirPersona);
 document.getElementById("boton2").addEventListener("click", anadirEmpleado);
 function anadirPersona() {
@@ -29,21 +60,14 @@ function anadirPersona() {
         return;
     }
     let nuevaPersona = new Persona(nuevoNombre, nuevaEdad);
-    let _ventana1 = document.getElementById("ventana1");
-    console.log("<" + _ventana1.innerHTML + ">");
-    if (_ventana1.innerHTML == "") {
-        creaVentanas(_ventana1, "1");
+    let _ventana = document.getElementById("ventana1");
+    if (_ventana.innerHTML == "") {
+        creaVentanas(_ventana, "1");
     }
-    conjuntoPersonas.add(nuevaPersona);
-    let nuevoLi = document.createElement("li");
-    nuevoLi.textContent = `${nuevaPersona.nombre} (${nuevaPersona.edad})`;
-    document.getElementById("listaNombres1").appendChild(nuevoLi);
-    sumaEdadesPersonas += nuevaEdad;
-    let mediaEdad = Number((sumaEdadesPersonas / conjuntoPersonas.size).toFixed(2));
-    let textoResultado = `<p class="mb-0">Edad media: ${mediaEdad}</p>`;
-    document.getElementById("resultado1").innerHTML = textoResultado;
-    vaciaInput("entradaNombre1");
-    vaciaInput("entradaEdad1");
+    grupoPersonas.ponPersona(nuevaPersona);
+    crearLinea("listaNombres1", `${nuevaPersona.nombre} (${nuevaPersona.edad})`);
+    document.getElementById("resultado1").innerHTML = `<p class="mb-0">Edad media: ${grupoPersonas.edadMedia()}</p>`;
+    vaciarInputs("#form1");
 }
 function anadirEmpleado() {
     let nuevaIdentificacion = document.getElementById("entradaIdentificador2").value;
@@ -66,38 +90,25 @@ function anadirEmpleado() {
         alert("Hay que introducir la experiencia.");
         return;
     }
-    let _ventana2 = document.getElementById("ventana2");
-    if (_ventana2.innerHTML == "") {
-        creaVentanas(_ventana2, "2");
+    let _ventana = document.getElementById("ventana2");
+    if (_ventana.innerHTML == "") {
+        creaVentanas(_ventana, "2");
     }
-    if (!conjuntoEmpleados.has(nuevaIdentificacion)) {
-        let nuevoEmpleado = new Empleado(nuevoNombre, nuevaEdad, nuevaExperiencia);
-        conjuntoEmpleados.set(nuevaIdentificacion, nuevoEmpleado);
-        let nuevoLi = document.createElement("li");
-        nuevoLi.textContent = `${nuevoEmpleado.nombre} - Edad: ${nuevoEmpleado.edad} - Experiencia: ${nuevoEmpleado.experiencia}`;
-        document.getElementById("listaNombres2").appendChild(nuevoLi);
-        sumaEdadesEmpleados += nuevaEdad;
-        sumaExperienciaEmpleados += nuevaExperiencia;
-        let mediaEdad = Number((sumaEdadesEmpleados / conjuntoEmpleados.size).toFixed(2));
-        let textoResultado = `<p class="mb-1>Edad media: ${mediaEdad}</p>
-                              <p class="mb-0">Experiencia acumulada: ${sumaExperienciaEmpleados}</p>`;
-        document.getElementById("resultado2").innerHTML = textoResultado;
-        vaciaInput("entradaIdentificador2");
-        vaciaInput("entradaNombre2");
-        vaciaInput("entradaEdad2");
-        vaciaInput("entradaExperiencia2");
+    let nuevoEmpleado = new Empleado(nuevoNombre, nuevaEdad, nuevaExperiencia);
+    if (grupoEmpleados.ponEmpleado(nuevaIdentificacion, nuevoEmpleado)) {
+        crearLinea("listaNombres2", `(${nuevaIdentificacion}) ${nuevoEmpleado.nombre} - Edad: ${nuevoEmpleado.edad} - Experiencia: ${nuevoEmpleado.experiencia}`);
+        document.getElementById("resultado2").innerHTML = `<p class="mb-1">Edad media: ${grupoEmpleados.edadMedia()}</p>
+                                                           <p class="mb-0">Experiencia acumulada: ${grupoEmpleados.sumaExperiencias}</p>`;
+        vaciarInputs("#form2");
     }
     else {
-        alert("El identificador ".concat(nuevaIdentificacion, " ya existe."));
+        alert(`El identificador ${nuevaIdentificacion} ya existe.`);
     }
-}
-function vaciaInput(id) {
-    document.getElementById(id).value = "";
 }
 function creaVentanas(ventanaPadre, strVentana) {
     let _div1 = document.createElement("div");
     _div1.id = `ventanaLista${strVentana}`;
-    _div1.classList.value = "container col-lg-4 mt-3 py-2 bg-light";
+    _div1.classList.value = "container col-lg-4 mt-3 py-2 bg-light border border-dark";
     ventanaPadre.appendChild(_div1);
     let _ul1 = document.createElement("ul");
     _ul1.id = `listaNombres${strVentana}`;
@@ -105,7 +116,18 @@ function creaVentanas(ventanaPadre, strVentana) {
     _div1.appendChild(_ul1);
     let _div2 = document.createElement("div");
     _div2.id = `resultado${strVentana}`;
-    _div2.classList.value = "container col-lg-4 mt-3 py-2 bg-light";
+    _div2.classList.value = "container col-lg-4 mt-3 py-2 bg-light border border-dark";
     ventanaPadre.appendChild(_div2);
+}
+function crearLinea(lista, texto) {
+    let nuevoLi = document.createElement("li");
+    nuevoLi.textContent = texto;
+    document.getElementById(lista).appendChild(nuevoLi);
+}
+function vaciarInputs(form) {
+    let entradas = document.querySelectorAll(`${form} input`);
+    [].forEach.call(entradas, function (elemento) {
+        elemento.value = "";
+    });
 }
 //# sourceMappingURL=site.js.map
