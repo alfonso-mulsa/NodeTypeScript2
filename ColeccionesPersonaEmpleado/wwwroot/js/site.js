@@ -82,11 +82,14 @@ function anadirEmpleado() {
         let textoResultado = `<p class="mb-1>Edad media: ${mediaEdad}</p>
                               <p class="mb-0">Experiencia acumulada: ${sumaExperienciaEmpleados}</p>`;
         document.getElementById("resultado2").innerHTML = textoResultado;
+        vaciaInput("entradaIdentificador2");
+        vaciaInput("entradaNombre2");
+        vaciaInput("entradaEdad2");
+        vaciaInput("entradaExperiencia2");
     }
-    vaciaInput("entradaIdentificador2");
-    vaciaInput("entradaNombre2");
-    vaciaInput("entradaEdad2");
-    vaciaInput("entradaExperiencia2");
+    else {
+        alert("El identificador ".concat(nuevaIdentificacion, " ya existe."));
+    }
 }
 function vaciaInput(id) {
     document.getElementById(id).value = "";
